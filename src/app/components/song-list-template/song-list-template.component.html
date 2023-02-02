@@ -1,0 +1,46 @@
+<table mat-table [dataSource]="listData" class="mat-elevation-z8 song-list">
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> # </th>
+        <td mat-cell *matCellDef="let song; let i = index">{{i + 1}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Tiêu đề </th>
+        <td mat-cell *matCellDef="let song" class=" item-infor">
+            <img src="{{song.imageURL}}" class="image" />
+            <div class="infor">
+                <p class="song-name">{{song.name}}</p>
+                <p class="artist-name">{{song.singer}}</p>
+            </div>
+        </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef> Nhạc sỹ </th>
+        <td mat-cell *matCellDef="let  song"> {{song.author}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Thể loại </th>
+        <td mat-cell *matCellDef="let  song"> {{song.category}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="love-icon">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef= "let song"> <i class="fa-regular fa-heart love-icon" (click) = "loveSongFunc({songData:song})"></i></td>
+    </ng-container>
+
+    <ng-container matColumnDef="duration">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-icon>query_builder</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let  song"> {{convertTimeFunction({time:song.duration})}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr (click)="open(row)" mat-row class="song-list-item" *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

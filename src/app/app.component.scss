@@ -1,0 +1,73 @@
+.spotify {
+    --sideBarWidth: 180px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 16px;
+    .spotify-container {
+        display: flex;
+        flex: 1;
+        .spotify-side-bar {
+            width: var(--sideBarWidth);
+            background-color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            color: black;
+            position: relative;
+            .side-bar-logo {
+                width: 11rem;
+                margin-top: 12px;
+            }
+            .size-bar-option {
+                margin-top: 24px;
+                padding-bottom: 6px;
+                border-bottom: 1px solid rgb(126, 126, 126);
+                .size-bar-option-item {
+                    display: flex;
+                    align-items: center;
+                    margin: 16px 0;
+                    opacity: 0.5;
+                    color: black;
+                    text-decoration: none;
+                    cursor: pointer;
+                    &:hover {
+                        opacity: 1;
+                    }
+                    .option-item-label {
+                        margin-left: 8px;
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                    }
+                }
+                .option-item-active {
+                    opacity: 1;
+                }
+                .option-item-loved-song {
+                    margin-top: 36px;
+                    .icon {
+                        color: white;
+                        font-size: 1.3rem;
+                        background-image: linear-gradient(135deg, rgb(58, 58, 196) 50%, white);
+                        border-radius: 3px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+                .option-item-install-app {
+                    position: absolute;
+                    bottom: 0;
+                }
+            }
+        }
+        .spotify-content {
+            flex: 1;
+        }
+    }
+    .spotify-playing-bar {
+        background-color: red;
+        height: 100px;
+    }
+}
