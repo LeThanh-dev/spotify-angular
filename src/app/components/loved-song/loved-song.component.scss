@@ -1,0 +1,15 @@
+.cover-image {
+    display: flex;
+    align-items: flex-end;
+    background-image: linear-gradient(to bottom, #4d3895, #2a1e52);
+    padding: 24px;
+    margin-top: -12px;
+    color: white;
+    .image {
+        width: 200px;
+    }
+    .infor
+    {
+        margin-left: 16px;
+    }
+}

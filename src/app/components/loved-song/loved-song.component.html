@@ -1,2 +1,14 @@
-<p>loved-song works!</p>
-<app-song-list-template [listData]="LovedSongListData"></app-song-list-template>
+<div class="cover-image">
+    <img class="image" src="../../../assets/love-song-icon.png" />
+    <div class="infor">
+        <p style="    margin-bottom: 16px;
+        font-size: 1rem;">PLAYLIST</p>
+        <h1 style="  margin-bottom: 16px;
+        font-size: 5rem; font-weight: bold;">Bài hát đã thích</h1>
+        <p style="    margin-bottom: 0; font-size: 1rem;">
+            <app-user></app-user> - {{lovedSongQuantity}} bài hát
+        </p>
+    </div>
+
+</div>
+<app-song-list-template [listData]=" LovedSongListData"></app-song-list-template>

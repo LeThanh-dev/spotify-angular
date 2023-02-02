@@ -26,6 +26,7 @@ export class SongListTemplateComponent implements OnInit {
   }
 
   @Input() listData!: SongData[];
+  @Input() headerDark:boolean = false;
 
 
   displayedColumns: string[] = [
@@ -42,10 +43,11 @@ export class SongListTemplateComponent implements OnInit {
   }
 
   open(data: any) {
-    console.log(data)
+    console.log('click parent')
   }
-  
-  loveSongFunc({ songData }: { songData: SongData }) {
+
+  loveSongFunc({ event, songData }: { event: any, songData: SongData }) {
+    event.stopPropagation()
     console.log(songData)
   }
 }

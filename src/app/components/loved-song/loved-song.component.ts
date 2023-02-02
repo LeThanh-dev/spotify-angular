@@ -22,6 +22,36 @@ const LovedSongListData: SongData[] = [
     category: "Edm",
     duration: 125
   },
+  {
+    id: "song2",
+    name: "bai hat 2",
+    file: "https://spotify.baihat2.mp3",
+    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
+    singer: "Mono",
+    author: "Mono",
+    category: "Edm",
+    duration: 125
+  },
+  {
+    id: "song2",
+    name: "bai hat 2",
+    file: "https://spotify.baihat2.mp3",
+    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
+    singer: "Mono",
+    author: "Mono",
+    category: "Edm",
+    duration: 125
+  },
+  {
+    id: "song2",
+    name: "bai hat 5",
+    file: "https://spotify.baihat2.mp3",
+    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
+    singer: "Mono",
+    author: "Mono",
+    category: "Edm",
+    duration: 125
+  },
 ]
 
 @Component({
@@ -31,4 +61,6 @@ const LovedSongListData: SongData[] = [
 })
 export class LovedSongComponent {
   LovedSongListData = LovedSongListData
+
+  lovedSongQuantity = 12
 }

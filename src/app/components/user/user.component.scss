@@ -5,7 +5,9 @@
     background-color: rgb(196, 196, 196);
     border-radius: 32px;
     padding: 3px 6px;
-    margin: 0 12px 0 auto;
+    position: absolute;
+    top: 12px;
+    right: 40px;
     .user-image {
         width: 20px;
         border-radius: 50%;

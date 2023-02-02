@@ -3,11 +3,13 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 12px 16px;
+    overflow: hidden;
     .spotify-container {
         display: flex;
         flex: 1;
+        height: calc(100vh - 120px);
         .spotify-side-bar {
+            padding: 12px 16px;
             width: var(--sideBarWidth);
             background-color: white;
             position: fixed;
@@ -16,14 +18,15 @@
             bottom: 0;
             color: black;
             position: relative;
+            border-right: 1px solid var(--borderColor);
             .side-bar-logo {
                 width: 11rem;
-                margin-top: 12px;
+                margin-top: 6px;
             }
             .size-bar-option {
                 margin-top: 24px;
                 padding-bottom: 6px;
-                border-bottom: 1px solid rgb(126, 126, 126);
+                border-bottom: 1px solid var(--borderColor);
                 .size-bar-option-item {
                     display: flex;
                     align-items: center;
@@ -47,13 +50,7 @@
                 .option-item-loved-song {
                     margin-top: 36px;
                     .icon {
-                        color: white;
-                        font-size: 1.3rem;
-                        background-image: linear-gradient(135deg, rgb(58, 58, 196) 50%, white);
-                        border-radius: 3px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
+                        width: 16px;
                     }
                 }
                 .option-item-install-app {
@@ -64,10 +61,14 @@
         }
         .spotify-content {
             flex: 1;
+            overflow: auto;
+            padding: 12px;
+            padding: 12px 16px;
         }
     }
     .spotify-playing-bar {
         background-color: red;
         height: 100px;
+        width: 100vw;
     }
 }
