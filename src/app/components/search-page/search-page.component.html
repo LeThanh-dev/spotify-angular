@@ -1,12 +1,10 @@
-<div class="search">
-    <div class="search-input">
-        <mat-icon class="icon">search</mat-icon>
-        <input class="input" />
-    </div>
-    <div class="song-category">
-        <h2 class="title">Thể loại nhạc</h2>
-        <div class="list">
-
+<app-default-layout>
+    <div class="search">
+        <h1 class="title">Thể loại nhạc</h1>
+        <div class="song-category">
+            <div *ngFor="let category of categoryList" class="song-category-item" style="background-color: {{randomColor()}}">
+                <p class="label">{{category.name}}</p>
+            </div>
         </div>
     </div>
-</div>
+</app-default-layout>

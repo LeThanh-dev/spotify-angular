@@ -10,7 +10,7 @@ const LovedSongListData: SongData[] = [
     singer: "Sơn Tùng",
     author: "Sơn Tùng",
     category: "Pop",
-    duration: 182
+    duration: 130
   },
   {
     id: "song2",

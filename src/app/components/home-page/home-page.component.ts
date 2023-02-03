@@ -1,7 +1,7 @@
 
 
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SongData } from '../song-list-template/song-list-template.component';
 
 const SongListDefault: SongData[] = [
@@ -114,7 +114,24 @@ const SongListDefault: SongData[] = [
   styleUrls: ['./home-page.component.scss']
 })
 
-export class HomePageComponent {
-  SongListDefault = SongListDefault
+export class HomePageComponent implements OnInit {
+  songList = SongListDefault
+
+  songNameInput: string = ""
+
+  ngOnInit() {
+
+  }
+
+  searchSongFunc() {
+    if (this.songNameInput) {
+
+      this.songList = SongListDefault.filter(songData => songData.name.includes(this.songNameInput))
+    }
+    else {
+      this.songList = SongListDefault
+    }
+  }
+
 }
 

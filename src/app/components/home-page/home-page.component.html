@@ -1,3 +1,14 @@
-<div class="home-page">
-    <app-song-list-template [listData]="SongListDefault"></app-song-list-template>
-</div>
+<app-default-layout>
+    <div class="home-page">
+        <div class="search-input">
+            <i class="fa-solid fa-magnifying-glass icon"></i>
+            <input class="input" placeholder="Nhập tên bài hát..." 
+            [(ngModel)]="songNameInput"
+            (ngModelChange) = "searchSongFunc()"
+             />
+        </div>
+        <div class="song-list">
+            <app-song-list-template [songList]="songList"></app-song-list-template>
+        </div>
+    </div>
+</app-default-layout>

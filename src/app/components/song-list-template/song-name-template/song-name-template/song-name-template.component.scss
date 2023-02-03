@@ -1,0 +1,20 @@
+.song-name-template {
+    display: flex;
+    align-items: center;
+    .image {
+        width: 42px;
+        border-radius: 3px;
+    }
+    .infor {
+        font-weight: 500;
+        margin-left: 12px;
+        .song-name {
+            font-size: 1.6rem;
+            margin-bottom: 3px;
+        }
+        .song-artist {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+        }
+    }
+}

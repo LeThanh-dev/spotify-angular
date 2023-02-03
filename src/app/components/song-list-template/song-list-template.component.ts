@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import convertTime from 'src/app/functions/convertTime';
+import { ConvertTimeService } from 'src/app/services/convert-time/convert-time.service';
 
 
 export interface SongData {
@@ -20,27 +20,30 @@ export interface SongData {
 })
 export class SongListTemplateComponent implements OnInit {
 
+  constructor(private time: ConvertTimeService) {
+
+  }
+
+  // functions
+  convertTimeFunction({ time }: { time: number }) {
+    return this.time.convertTime({ time })
+  }
 
   ngOnInit(): void {
 
   }
 
-  @Input() listData!: SongData[];
-  @Input() headerDark:boolean = false;
+  @Input() songList!: SongData[];
+  @Input() headerDark: boolean = false;
 
 
-  displayedColumns: string[] = [
-    "id",
-    "name",
-    "author",
-    "category",
-    "love-icon",
-    "duration"
+  headerLabel: string[] = [
+    "#",
+    "Tên bài hát",
+    "Nhạc sỹ",
+    "Thể loại",
+    "",
   ];
-  // functions
-  convertTimeFunction({ time }: { time: number }) {
-    return convertTime({ time })
-  }
 
   open(data: any) {
     console.log('click parent')
@@ -49,5 +52,14 @@ export class SongListTemplateComponent implements OnInit {
   loveSongFunc({ event, songData }: { event: any, songData: SongData }) {
     event.stopPropagation()
     console.log(songData)
+  }
+
+  playSong() {
+    console.log('row click');
+  }
+
+  addToLovedSong(event: any) {
+    event.stopPropagation()
+    console.log('love click');
   }
 }

@@ -1,41 +1,20 @@
-.song-list {
-    box-shadow: none;
-    font-size: 1.3rem;
-    .song-list-item {
-        &:hover {
-            background-color: rgb(231, 231, 231);
-        }
+.song-list-table {
+    font-size: 1.6rem;
+    td,
+    th {
+        padding: 12px 6px;
     }
-    .item-infor {
-        display: flex;
-        align-items: center;
-        padding: 6px;
-        .image {
-            width: 40px;
-        }
-        .infor {
-            margin-left: 12px;
-            .song-name {
-                margin-bottom: 3px;
-                font-size: 1.6rem;
-            }
-            .artist-name {
-                margin-bottom: 0;
-                font-size: 1.2rem;
-                opacity: 0.6;
-            }
-        }
+    th[scope="row"] {
+        width: 40px;
     }
-    .love-icon 
-    {
+    .love-icon {
+        opacity: 0.6;
         cursor: pointer;
-        &:hover 
-        {
-            color: rgb(29, 185, 29);
+        transition: 0.1s;
+        &:hover {
+            transform: scale(1.1);
+            opacity: 1;
+            color: var(--greenColor);
         }
-    }
-    .row-is-clicked
-    {
-        background-color: red;
     }
 }
