@@ -1,42 +1,41 @@
 .spotify {
-    --sideBarWidth: 220px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    color: white;
     .spotify-container {
         display: flex;
         flex: 1;
         height: calc(100vh - 120px);
         .spotify-side-bar {
-            padding: 12px 20px;
-            width: var(--sideBarWidth);
-            background-color: white;
-            position: fixed;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            color: black;
+            padding: 16px 20px;
+            width: 240px;
+            background-color: black;
             position: relative;
             border-right: 1px solid var(--borderColor);
             .icon {
                 padding-right: 6px;
+                font-size: 2rem;
+                width: 28px;
             }
             .side-bar-logo {
                 width: 13rem;
                 margin-top: 6px;
+                color: white;
             }
             .size-bar-option {
-                margin-top: 40px;
-                padding-bottom: 6px;
+                margin-top: 12px;
+                padding-top: 6px;
                 border-bottom: 1px solid var(--borderColor);
                 .size-bar-option-item {
                     display: flex;
                     align-items: center;
-                    margin: 28px 0;
-                    opacity: 0.5;
-                    color: black;
+                    margin: 30px 0;
+                    opacity: 0.6;
+                    color: white;
                     text-decoration: none;
+                    transition: 0.1s;
                     cursor: pointer;
                     &:hover {
                         opacity: 1;
@@ -46,15 +45,11 @@
                         font-size: 1.6rem;
                         font-weight: 500;
                     }
-                    .icon {
-                        font-size: 2rem;
-                    }
                 }
                 .option-item-active {
                     opacity: 1;
                 }
                 .option-item-loved-song {
-                    margin-top: 36px;
                     .icon {
                         width: 28px;
                     }
@@ -69,20 +64,34 @@
             flex: 1;
             overflow-y: auto;
             overflow-x: hidden;
-            padding: 12px 24px;
+            padding: 16px 24px;
+            background-color: #121212;
             .user-infor {
-                padding: 5px 10px;
-                background-color: #efefef;
+                padding: 5px 8px;
+                background-color: black;
+                color: white;
                 position: absolute;
-                top: 12px;
+                top: 16px;
                 right: 32px;
                 border-radius: 32px;
             }
         }
     }
     .spotify-playing-bar {
-        background-color: red;
-        height: 100px;
-        width: 100vw;
+        background-color: #181818;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding:  16px;
+        .song-infor {
+            flex-basis: 40%;
+        }
+
+        .play-box {
+            flex: 1;
+            .audio {
+                width: 100%;
+            }
+        }
     }
 }

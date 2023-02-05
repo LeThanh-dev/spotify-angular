@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { PlayingSongService } from './../../services/playing-song/playing-song.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-default-layout',
@@ -7,11 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DefaultLayoutComponent implements OnInit {
 
-  @Input() children!: Element
 
+  constructor(private playingSong: PlayingSongService) {
+  }
   ngOnInit(): void {
-
   }
 
+  getPlayingSong() {
+    return this.playingSong.getPlayingSong()
+  }
 
+  
 }

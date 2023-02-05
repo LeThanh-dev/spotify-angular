@@ -1,17 +1,19 @@
-<table class="table  table-hover  song-list-table">
-    <thead class="table-light">
+<table class="table align-middle table-borderless song-list-table  ">
+    <thead>
         <tr>
-            <th *ngFor="let label of headerLabel" scope="col">{{label}}</th>
+            <th *ngFor="let label of headerLabel; let index = index" scope="col" [ngClass]="{'center-cell':index === 0}">
+                {{label}}</th>
             <th scope="col">
                 <i class="fa-regular fa-clock"></i>
             </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let song of songList" (click)="playSong()">
-            <td>{{song.id}}</td>
+        <tr *ngFor="let song of songList" (click)="playSong(song)"
+            [ngClass]="{'active':getPLayingSongId() === song.id}">
+            <td class="center-cell">{{song.id}}</td>
             <td>
-                <app-song-name-template [songName]="song.name" [songArtist]="song.singer"></app-song-name-template>
+                <app-song-name-template [songName]="song.name" [songSinger]="song.singer"></app-song-name-template>
             </td>
             <td>{{song.author}}</td>
             <td>{{song.category}}</td>

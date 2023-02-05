@@ -1,3 +1,4 @@
+import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SingInComponent } from './admin/sing-in/sing-in.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
@@ -10,7 +11,24 @@ const routes: Routes = [
   {
     path: '',
     title: "Spotify",
-    component: HomePageComponent
+    component: DefaultLayoutComponent,
+    children: [
+      {
+        path: '',
+        title: "Spotify",
+        component: HomePageComponent,
+      },
+      {
+        path: 'search',
+        title: "Tìm kiếm | Spotify",
+        component: SearchPageComponent
+      },
+      {
+        path: 'loved-song',
+        title: "Bài hát đã thích | Spotify",
+        component: LovedSongComponent
+      },
+    ]
   },
   {
     path: 'sign-in',
@@ -18,16 +36,7 @@ const routes: Routes = [
     component: SingInComponent
   },
 
-  {
-    path: 'search',
-    title: "Tìm kiếm | Spotify",
-    component: SearchPageComponent
-  },
-  {
-    path: 'loved-song',
-    title: "Bài hát đã thích | Spotify",
-    component: LovedSongComponent
-  },
+
   {
     path: '**',
     title: "Spotify",

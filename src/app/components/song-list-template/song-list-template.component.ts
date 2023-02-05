@@ -1,3 +1,4 @@
+import { PlayingSongService } from './../../services/playing-song/playing-song.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ConvertTimeService } from 'src/app/services/convert-time/convert-time.service';
 
@@ -20,7 +21,7 @@ export interface SongData {
 })
 export class SongListTemplateComponent implements OnInit {
 
-  constructor(private time: ConvertTimeService) {
+  constructor(private time: ConvertTimeService,private playingSong:PlayingSongService) {
 
   }
 
@@ -54,12 +55,17 @@ export class SongListTemplateComponent implements OnInit {
     console.log(songData)
   }
 
-  playSong() {
-    console.log('row click');
+  playSong(song:SongData) {
+    this.playingSong.setPlayingSong(song)
   }
-
+  getPLayingSongId()
+  {
+    return this.playingSong.getPlayingSong().id
+  }
   addToLovedSong(event: any) {
     event.stopPropagation()
     console.log('love click');
   }
+
+
 }

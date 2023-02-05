@@ -1,7 +1,7 @@
 <div class="song-name-template">
-    <img src="../../../../../assets/song-img.jpg" class="image" />
+    <img src="../../../../../assets/song-img.jpg" class="image" [ngClass]="{'big-image': bigImageState}" />
     <div class="infor">
         <p class="song-name">{{songName}}</p>
-        <p class="song-artist">{{songArtist}}</p>
+        <p class="song-artist">{{songSinger}}</p>
     </div>
 </div>

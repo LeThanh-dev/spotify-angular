@@ -1,20 +1,18 @@
-<app-default-layout>
-    <div class="love-song">
-        <div class="cover-image">
-            <img class="image" src="../../../assets/love-song-icon.png" />
-            <div class="infor">
-                <p style="    margin-bottom: 36px;
+<div class="love-song">
+    <div class="cover-image">
+        <img class="image" src="../../../assets/love-song-icon.png" />
+        <div class="infor">
+            <p style="    margin-bottom: 36px; font-weight: 500;
             font-size: 1.3rem;">PLAYLIST</p>
-                <h1 class="title-big">Bài hát đã thích</h1>
-                <p class="infor-quantity">
-                    <app-user></app-user><span style="margin-left: 6px;">- {{lovedSongQuantity}} bài hát</span>
-                </p>
-            </div>
-    
+            <h1 class="title-big">Bài hát đã thích</h1>
+            <p class="infor-quantity">
+                <app-user></app-user><span style="margin-left: 6px;">- {{lovedSongQuantity}} bài hát</span>
+            </p>
         </div>
-        <i class="fa-solid fa-circle-play play-icon"></i>
-        <div class="song-list">
-            <app-song-list-template [songList]="LovedSongListData"></app-song-list-template>
-        </div>
+
     </div>
-</app-default-layout>
+    <i class="fa-solid fa-circle-play play-icon"></i>
+    <div class="song-list">
+        <app-song-list-template [songList]="LovedSongListData"></app-song-list-template>
+    </div>
+</div>

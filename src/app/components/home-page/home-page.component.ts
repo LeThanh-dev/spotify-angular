@@ -126,7 +126,7 @@ export class HomePageComponent implements OnInit {
   searchSongFunc() {
     if (this.songNameInput) {
 
-      this.songList = SongListDefault.filter(songData => songData.name.includes(this.songNameInput))
+      this.songList = SongListDefault.filter(songData => songData.name.includes(this.songNameInput.trim()))
     }
     else {
       this.songList = SongListDefault

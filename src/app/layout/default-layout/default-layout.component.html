@@ -39,10 +39,18 @@
                 <app-user></app-user>
             </div>
             <!-- Children Element -->
-            <ng-content></ng-content>
+            <router-outlet></router-outlet>
         </div>
 
     </div>
     <div class="spotify-playing-bar">
+        <div class="song-infor">
+            <app-song-name-template [songName]="getPlayingSong().name" [songSinger]="getPlayingSong().singer"
+                [bigImageState]="true"></app-song-name-template>
+        </div>
+        <div class="play-box">
+            <audio class="audio" controls autoplay [src]="getPlayingSong().file">
+            </audio>
+        </div>
     </div>
 </div>

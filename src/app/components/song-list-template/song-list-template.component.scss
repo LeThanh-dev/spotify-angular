@@ -1,4 +1,9 @@
+$activeColor: #2a2a2a;
+@mixin rowActive {
+    background-color: $activeColor;
+}
 .song-list-table {
+    color: white;
     font-size: 1.6rem;
     td,
     th {
@@ -6,6 +11,21 @@
     }
     th[scope="row"] {
         width: 40px;
+    }
+    tbody {
+        tr {
+            &:hover {
+                @include rowActive();
+            }
+        }
+    }
+    .active {
+        @include rowActive();
+    }
+    .center-cell
+    {
+        text-align: center;
+        width: fit-content;
     }
     .love-icon {
         opacity: 0.6;
@@ -16,5 +36,8 @@
             opacity: 1;
             color: var(--greenColor);
         }
+    }
+    .active {
+        background-color: $activeColor;
     }
 }
