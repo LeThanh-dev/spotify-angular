@@ -12,6 +12,9 @@ $activeColor: #2a2a2a;
     th[scope="row"] {
         width: 40px;
     }
+    tr {
+        opacity: 0.8;
+    }
     tbody {
         tr {
             &:hover {
@@ -19,13 +22,11 @@ $activeColor: #2a2a2a;
             }
         }
     }
-    .active {
+    tr .active {
         @include rowActive();
     }
-    .center-cell
-    {
+    .center-cell {
         text-align: center;
-        width: fit-content;
     }
     .love-icon {
         opacity: 0.6;

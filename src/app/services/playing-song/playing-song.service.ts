@@ -1,25 +1,27 @@
 import { Injectable, OnInit } from '@angular/core';
 
 export interface PlayingSongData {
-  id:string,
+  songID: string,
   name: string,
-  file: string,
+  pathMusic: string,
   imageURL: string,
-  singer: string
+  singers: string[],
+  isPlaying?: boolean
 }
 
 @Injectable({
   providedIn: 'root'
 })
-  
+
 export class PlayingSongService implements OnInit {
 
   private playingSong: PlayingSongData = {
-    id:"",
+    songID: "",
     name: "",
-    file: "",
+    pathMusic: "",
     imageURL: "",
-    singer: ""
+    singers: [],
+    isPlaying: false
   }
 
   constructor() { }
@@ -32,9 +34,21 @@ export class PlayingSongService implements OnInit {
     return this.playingSong
   }
   setPlayingSong(data: PlayingSongData) {
-    console.log(data);
-    
     this.playingSong = data
+  }
+
+  playSong() {
+    this.playingSong = {
+      ...this.playingSong,
+      isPlaying: true
+    }
+  }
+
+  pauseSong() {
+    this.playingSong = {
+      ...this.playingSong,
+      isPlaying: false
+    }
   }
 
 }

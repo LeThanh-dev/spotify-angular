@@ -12,12 +12,13 @@
         font-weight: 500;
         margin-left: 12px;
         .song-name {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin-bottom: 3px;
         }
-        .song-artist {
-            font-size: 1.2rem;
+        .song-singers {
+            font-size: 1.3rem;
             margin-bottom: 0;
+            opacity: .6;
         }
     }
 }

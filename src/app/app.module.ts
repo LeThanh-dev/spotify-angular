@@ -6,17 +6,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { HttpClientModule } from '@angular/common/http';
-// MUI module
 import { LovedSongComponent } from './components/loved-song/loved-song.component';
 import { SongListTemplateComponent } from './components/song-list-template/song-list-template.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { UserComponent } from './components/user/user.component';
-import { SignUpComponent } from './admin/sign-up/sign-up.component';
-import { SingInComponent } from './admin/sing-in/sing-in.component';
 import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SongNameTemplateComponent } from './components/song-list-template/song-name-template/song-name-template/song-name-template.component';
+import { PlayIconComponent } from './components/play-icon/play-icon/play-icon.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -28,16 +28,18 @@ import { SongNameTemplateComponent } from './components/song-list-template/song-
     SearchPageComponent,
     UserComponent,
     SignUpComponent,
-    SingInComponent,
+    SignInComponent,
     DefaultLayoutComponent,
     SongNameTemplateComponent,
+    PlayIconComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

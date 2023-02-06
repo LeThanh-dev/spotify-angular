@@ -1,5 +1,5 @@
 .love-song {
-    background-image: linear-gradient(to bottom, #33226b, #4d4568,black 70%);
+    background-image: linear-gradient(to bottom, #503b97, #5a4991,black 70%);
     margin: -12px -24px 0;
     padding: 24px;
     $boxShadow:#25155c;
@@ -30,8 +30,6 @@
     }
     .play-icon {
         margin: 32px 0 24px 6px;
-        font-size: 5.5rem;
-        color: var(--greenColor);
         cursor: pointer;
     }
     .song-list {

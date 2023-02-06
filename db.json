@@ -1,19 +1,29 @@
 {
-  "posts": [
+  "get-list-song": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "songID": "song 1",
+      "name": "bai hat 1",
+      "author": "Sơn Tùng",
+      "singers": [
+        "Sơn Tùng"
+      ],
+      "pathMusic": "https://p.scdn.co/mp3-preview/71de8f1111711a564a3c71f41e54ede9fec98407?cid=b4d876fc16314d0eb2f8bac2f363f74e",
+      "imageURL": "https://i.scdn.co/image/ab67616d00004851bd5e1e87284f21254d1fd7d0",
+      "categoryName": "Pop",
+      "isDelete": false
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "songID": "song 2",
+      "name": "bai hat 2",
+      "author": "Mono",
+      "singers": [
+        "Mono",
+        "Onionn"
+      ],
+      "pathMusic": "https://p.scdn.co/mp3-preview/a6d484a64efd5e8c1458156cf698b0f05eb60483?cid=b4d876fc16314d0eb2f8bac2f363f74e",
+      "imageURL": "https://spotify.baihat1.mp3",
+      "categoryName": "edm",
+      "isDelete": false
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

@@ -18,5 +18,12 @@ export class DefaultLayoutComponent implements OnInit {
     return this.playingSong.getPlayingSong()
   }
 
+  pauseSong() {
+    this.playingSong.pauseSong()
+  }
+
+  playSong() {
+    this.playingSong.playSong()
+  }
   
 }

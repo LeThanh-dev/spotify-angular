@@ -1,11 +1,12 @@
 import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
-import { SingInComponent } from './admin/sing-in/sing-in.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 import { LovedSongComponent } from './components/loved-song/loved-song.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,12 @@ const routes: Routes = [
   {
     path: 'sign-in',
     title: "Đăng nhập | Spotify",
-    component: SingInComponent
+    component: SignInComponent
+  },
+  {
+    path: 'sign-up',
+    title: "Đăng ký | Spotify",
+    component: SignUpComponent
   },
 
 

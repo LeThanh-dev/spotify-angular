@@ -1,7 +1,12 @@
-<div class="song-name-template">
-    <img src="../../../../../assets/song-img.jpg" class="image" [ngClass]="{'big-image': bigImageState}" />
+<div class="song-name-template" *ngIf="data">
+    <img [src]="data.songImage" class="image" [ngClass]="{'big-image': bigImageState}" />
     <div class="infor">
-        <p class="song-name">{{songName}}</p>
-        <p class="song-artist">{{songSinger}}</p>
+        <p class="song-name">{{data.songName}}</p>
+        <span class="song-singers" *ngFor="let songSinger of data.songSingers ; let i = index">
+            <span>{{songSinger}}</span>
+            <span *ngIf="i !== data.songSingers.length - 1; then dauPhay;else dauCham"> </span>
+            <ng-template #dauPhay>, </ng-template>
+            <ng-template #dauCham>.</ng-template>
+        </span>
     </div>
 </div>

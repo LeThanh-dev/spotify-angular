@@ -4,14 +4,14 @@ import { ConvertTimeService } from 'src/app/services/convert-time/convert-time.s
 
 
 export interface SongData {
-  id: string,
+  songID: string,
   name: string,
-  file: string,
-  imageURL: string,
-  singer: string,
   author: string,
-  category: string,
-  duration: number
+  singers: string[],
+  imageURL: string,
+  pathMusic: string,
+  categoryName: string,
+  isDelete: boolean
 }
 
 @Component({
@@ -21,21 +21,19 @@ export interface SongData {
 })
 export class SongListTemplateComponent implements OnInit {
 
-  constructor(private time: ConvertTimeService,private playingSong:PlayingSongService) {
+  @Input() songList!: SongData[];
+  @Input() headerDark: boolean = false;
+
+  constructor(private time: ConvertTimeService, private playingSong: PlayingSongService) {
 
   }
 
-  // functions
-  convertTimeFunction({ time }: { time: number }) {
-    return this.time.convertTime({ time })
-  }
 
   ngOnInit(): void {
 
   }
 
-  @Input() songList!: SongData[];
-  @Input() headerDark: boolean = false;
+
 
 
   headerLabel: string[] = [
@@ -43,8 +41,13 @@ export class SongListTemplateComponent implements OnInit {
     "Tên bài hát",
     "Nhạc sỹ",
     "Thể loại",
-    "",
+    // "",
   ];
+
+  // functions
+  convertTimeFunction({ time }: { time: number }) {
+    return this.time.convertTime({ time })
+  }
 
   open(data: any) {
     console.log('click parent')
@@ -55,12 +58,18 @@ export class SongListTemplateComponent implements OnInit {
     console.log(songData)
   }
 
-  playSong(song:SongData) {
-    this.playingSong.setPlayingSong(song)
+  playSong(song: SongData) {
+    this.playingSong.setPlayingSong({
+      ...song,
+      isPlaying: true
+    })
   }
-  getPLayingSongId()
-  {
-    return this.playingSong.getPlayingSong().id
+  getPLayingSongState() {
+    const data = this.playingSong.getPlayingSong()
+    return {
+      id: data.songID,
+      isPlaying: data.isPlaying
+    }
   }
   addToLovedSong(event: any) {
     event.stopPropagation()

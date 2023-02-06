@@ -26,6 +26,11 @@
                     <img class="icon" src="../assets/love-song-icon.png" />
                     <span class="option-item-label">Bài hát đã thích</span>
                 </a>
+                <a routerLink="/sign-in" class="size-bar-option-item option-item-loved-song"
+                    routerLinkActive="option-item-active">
+                    <img class="icon" src="../assets/love-song-icon.png" />
+                    <span class="option-item-label">Dang nhap</span>
+                </a>
                 <a href="https://www.spotify.com/vn-vi/download/windows/" target="_blank"
                     class="size-bar-option-item option-item-install-app">
                     <i class="fa-solid fa-circle-down icon"></i>
@@ -43,14 +48,31 @@
         </div>
 
     </div>
-    <div class="spotify-playing-bar">
+    <div class="spotify-playing-bar" *ngIf="getPlayingSong().songID">
         <div class="song-infor">
-            <app-song-name-template [songName]="getPlayingSong().name" [songSinger]="getPlayingSong().singer"
-                [bigImageState]="true"></app-song-name-template>
+            <app-song-name-template [data]="{
+                songName: getPlayingSong().name, 
+                songImage:getPlayingSong().imageURL, 
+                songSingers:getPlayingSong().singers
+            }" [bigImageState]="true"></app-song-name-template>
         </div>
+        <!-- <div class="pre-next-icon">
+            <i class="fa-solid fa-backward-step icon"></i>
+            <i class="fa-solid fa-forward-step icon"></i>
+        </div> -->
         <div class="play-box">
-            <audio class="audio" controls autoplay [src]="getPlayingSong().file">
+            <audio class="audio" controls [src]="getPlayingSong().pathMusic" #audioELement (pause)="pauseSong()"
+                (play)="playSong()">
             </audio>
+
+            <!-- handle play song -->
+            <span *ngIf="getPlayingSong().isPlaying; then play ;else pause"></span>
+            <ng-template #play>
+                <p style="display: none;">{{audioELement.play()}}</p>
+            </ng-template>
+            <ng-template #pause>
+                <p style="display: none;">{{audioELement.pause()}}</p>
+            </ng-template>
         </div>
     </div>
 </div>

@@ -1,111 +1,7 @@
-
-
-
+import { PlayingSongService } from 'src/app/services/playing-song/playing-song.service';
 import { Component, OnInit } from '@angular/core';
+import { SongApiService } from 'src/app/services/song-api/song-api.service';
 import { SongData } from '../song-list-template/song-list-template.component';
-
-const SongListDefault: SongData[] = [
-  {
-    id: "song1",
-    name: "bai hat 3",
-    file: "https://spotify.baihat1.mp3",
-    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
-    singer: "Sơn Tùng",
-    author: "Sơn Tùng",
-    category: "Pop",
-    duration: 182
-  },
-  {
-    id: "song2",
-    name: "bai hat 2",
-    file: "https://spotify.baihat2.mp3",
-    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
-    singer: "Mono",
-    author: "Mono",
-    category: "Edm",
-    duration: 125
-  },
-  {
-    id: "song2",
-    name: "bai hat 2",
-    file: "https://spotify.baihat2.mp3",
-    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
-    singer: "Mono",
-    author: "Mono",
-    category: "Edm",
-    duration: 125
-  },
-  {
-    id: "song2",
-    name: "bai hat 2",
-    file: "https://spotify.baihat2.mp3",
-    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
-    singer: "Mono",
-    author: "Mono",
-    category: "Edm",
-    duration: 125
-  },
-  {
-    id: "song2",
-    name: "bai hat 2",
-    file: "https://spotify.baihat2.mp3",
-    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
-    singer: "Mono",
-    author: "Mono",
-    category: "Edm",
-    duration: 125
-  },
-  {
-    id: "song2",
-    name: "bai hat 2",
-    file: "https://spotify.baihat2.mp3",
-    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
-    singer: "Mono",
-    author: "Mono",
-    category: "Edm",
-    duration: 125
-  },
-  {
-    id: "song2",
-    name: "bai hat 2",
-    file: "https://spotify.baihat2.mp3",
-    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
-    singer: "Mono",
-    author: "Mono",
-    category: "Edm",
-    duration: 125
-  },
-  {
-    id: "song2",
-    name: "bai hat 2",
-    file: "https://spotify.baihat2.mp3",
-    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
-    singer: "Mono",
-    author: "Mono",
-    category: "Edm",
-    duration: 125
-  },
-  {
-    id: "song2",
-    name: "bai hat 2",
-    file: "https://spotify.baihat2.mp3",
-    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
-    singer: "Mono",
-    author: "Mono",
-    category: "Edm",
-    duration: 125
-  },
-  {
-    id: "song2",
-    name: "bai hat 2",
-    file: "https://spotify.baihat2.mp3",
-    imageURL: "https://i.scdn.co/image/ab67616d0000485148e90a4c48b31c66e8b0d24f",
-    singer: "Mono",
-    author: "Mono",
-    category: "Edm",
-    duration: 125
-  },
-]
 
 
 @Component({
@@ -115,21 +11,34 @@ const SongListDefault: SongData[] = [
 })
 
 export class HomePageComponent implements OnInit {
-  songList = SongListDefault
 
+  songList: SongData[] = []
+  songListDefault: SongData[] = []
   songNameInput: string = ""
 
-  ngOnInit() {
+  constructor(private songService: SongApiService, private playingSong: PlayingSongService) { }
 
+  getSongList() {
+    this.songService.getSongList()
+      .subscribe(songList => {
+        this.songList = songList as SongData[]
+        this.songListDefault = this.songList
+        !this.playingSong.getPlayingSong().songID && this.playingSong.setPlayingSong(this.songListDefault[0])
+      })
+  }
+
+  ngOnInit() {
+    this.getSongList()
   }
 
   searchSongFunc() {
-    if (this.songNameInput) {
+    const songNameInputTrim = this.songNameInput.trim()
+    if (songNameInputTrim) {
 
-      this.songList = SongListDefault.filter(songData => songData.name.includes(this.songNameInput.trim()))
+      this.songList = this.songListDefault.filter(songData => songData.name.toLowerCase().includes(songNameInputTrim.toLowerCase()))
     }
     else {
-      this.songList = SongListDefault
+      this.songList = this.songListDefault
     }
   }
 

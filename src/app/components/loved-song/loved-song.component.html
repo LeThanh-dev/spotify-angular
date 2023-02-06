@@ -6,13 +6,15 @@
             font-size: 1.3rem;">PLAYLIST</p>
             <h1 class="title-big">Bài hát đã thích</h1>
             <p class="infor-quantity">
-                <app-user></app-user><span style="margin-left: 6px;">- {{lovedSongQuantity}} bài hát</span>
+                <app-user></app-user><span style="margin-left: 6px;">- {{lovedSongListData.length}} bài hát</span>
             </p>
         </div>
 
     </div>
-    <i class="fa-solid fa-circle-play play-icon"></i>
+    <div class="play-icon">
+        <app-play-icon [styleCustom]="' color: var(--greenColor); font-size:5.5rem'"></app-play-icon>
+    </div>
     <div class="song-list">
-        <app-song-list-template [songList]="LovedSongListData"></app-song-list-template>
+        <app-song-list-template [songList]="lovedSongListData"></app-song-list-template>
     </div>
 </div>

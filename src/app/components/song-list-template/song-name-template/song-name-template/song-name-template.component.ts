@@ -7,11 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SongNameTemplateComponent implements OnInit {
 
-  @Input() songName!: string;
-  @Input() songSinger!: string;
+  @Input() data!: {
+    songName: string,
+    songImage: string,
+    songSingers: string[]
+  };
+ 
   @Input() bigImageState: boolean = false;
 
   ngOnInit(): void {
-
   }
+  
 }

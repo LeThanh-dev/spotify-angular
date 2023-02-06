@@ -82,13 +82,25 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding:  16px;
+        padding: 16px;
         .song-infor {
-            flex-basis: 40%;
+            flex-basis: 25%;
         }
-
+        // .pre-next-icon {
+        //     margin: 0 24px;
+        //     .icon {
+        //         font-size: 2.2rem;
+        //         opacity: 0.8;
+        //         margin: 0 12px;
+        //         cursor: pointer;
+        //         &:hover {
+        //             opacity: 1;
+        //         }
+        //     }
+        // }
         .play-box {
-            flex: 1;
+            flex-basis: 50%;
+
             .audio {
                 width: 100%;
             }

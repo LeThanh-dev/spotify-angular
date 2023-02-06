@@ -1,0 +1,7 @@
+<span *ngIf="getPlayingSongState(); then play; else pause"></span>
+<ng-template #play>
+    <i class="fa-solid fa-circle-pause " [style]="styleCustom" (click)="pauseSong()"></i>
+</ng-template>
+<ng-template #pause>
+    <i class="fa-solid fa-circle-play " [style]="styleCustom"  (click)="playSong()"></i>
+</ng-template>

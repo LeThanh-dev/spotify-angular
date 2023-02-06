@@ -1,26 +1,41 @@
 <table class="table align-middle table-borderless song-list-table  ">
     <thead>
         <tr>
-            <th *ngFor="let label of headerLabel; let index = index" scope="col" [ngClass]="{'center-cell':index === 0}">
+            <th *ngFor="let label of headerLabel; let index = index" scope="col"
+                [ngClass]="{'center-cell':index === 0}">
                 {{label}}</th>
-            <th scope="col">
+            <!-- <th scope="col">
                 <i class="fa-regular fa-clock"></i>
-            </th>
+            </th> -->
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let song of songList" (click)="playSong(song)"
-            [ngClass]="{'active':getPLayingSongId() === song.id}">
-            <td class="center-cell">{{song.id}}</td>
+        <tr *ngFor="let song of songList; let index = index" (click)="playSong(song)"
+            [ngClass]="{'active':getPLayingSongState().id === song.songID && getPLayingSongState().isPlaying}">
+            <span *ngIf="getPLayingSongState().id === song.songID && getPLayingSongState().isPlaying; then play; else normal"></span>
+            <ng-template #play>
+                <td class="center-cell">
+                    <img src="../../../assets/song-playing.svg" />
+                </td>
+            </ng-template>
+            <ng-template #normal>
+                <td class="center-cell">
+                    {{index + 1}}
+                </td>
+            </ng-template>
             <td>
-                <app-song-name-template [songName]="song.name" [songSinger]="song.singer"></app-song-name-template>
+                <app-song-name-template [data]="{
+                    songName: song.name, 
+                    songImage:song.imageURL, 
+                    songSingers:song.singers
+                }"></app-song-name-template>
             </td>
             <td>{{song.author}}</td>
-            <td>{{song.category}}</td>
+            <td>{{song.categoryName}}</td>
             <td>
                 <i class="fa-regular fa-heart love-icon" (click)="addToLovedSong($event)"></i>
             </td>
-            <td>{{convertTimeFunction({time:song.duration})}}</td>
+            <!-- <td>{{convertTimeFunction({time:song.duration})}}</td> -->
         </tr>
     </tbody>
 </table>
