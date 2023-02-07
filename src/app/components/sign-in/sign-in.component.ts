@@ -38,7 +38,7 @@ export class SignInComponent implements OnInit {
           userId: userSignedInData?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
           userName: userSignedInData?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
         }
-        localStorage.setItem('userData', JSON.stringify(data))
+        sessionStorage.setItem('userData', JSON.stringify(data))
         this.route.navigate([''])
       }
     }, error => {

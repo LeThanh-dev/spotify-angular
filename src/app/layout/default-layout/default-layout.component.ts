@@ -32,7 +32,7 @@ export class DefaultLayoutComponent implements OnInit {
   }
 
   signOut() {
-    localStorage.removeItem("userData")
+    sessionStorage.removeItem("userData")
     this.route.navigate(["sign-in"])
   }
 }

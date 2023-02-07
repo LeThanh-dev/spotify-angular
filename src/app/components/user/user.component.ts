@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
   }
 
   getUserName() {
-    const userDataLocal = localStorage.getItem("userData")
+    const userDataLocal = sessionStorage.getItem("userData")
     if (userDataLocal) {
       this.userName = JSON.parse(userDataLocal)?.userName || ""
     }
