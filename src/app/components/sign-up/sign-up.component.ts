@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
   signUpFunc() {
     delete this.formData.value.rePassWord
     const data = this.formData.value
-    this.songServer.signUpAccount(data).subscribe(response => {
+    this.songServer.signUpAccount(data).subscribe((response:any) => {
       if (response) {
         this.router.navigate(['sign-in'])
       }

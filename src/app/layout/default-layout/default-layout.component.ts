@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { PlayingSongService } from './../../services/playing-song/playing-song.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class DefaultLayoutComponent implements OnInit {
 
 
-  constructor(private playingSong: PlayingSongService) {
+  constructor(
+    private playingSong: PlayingSongService,
+    private route: Router
+  ) {
   }
   ngOnInit(): void {
+
   }
 
   getPlayingSong() {
@@ -25,5 +30,9 @@ export class DefaultLayoutComponent implements OnInit {
   playSong() {
     this.playingSong.playSong()
   }
-  
+
+  signOut() {
+    localStorage.removeItem("userData")
+    this.route.navigate(["sign-in"])
+  }
 }

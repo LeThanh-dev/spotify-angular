@@ -10,7 +10,7 @@ export class JwtDecodeService {
 
   helper = new JwtHelperService();
 
-  decodeToken({ token }: { token: string }) {
+  decodeToken(token: string) {
 
     return this.helper.decodeToken(token);
   }

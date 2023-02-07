@@ -1,3 +1,4 @@
+import { SongListByCategoryComponent } from './components/song-list-by-category/song-list-by-category/song-list-by-category.component';
 import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
@@ -22,7 +23,11 @@ const routes: Routes = [
       {
         path: 'search',
         title: "Tìm kiếm | Spotify",
-        component: SearchPageComponent
+        component: SearchPageComponent,
+      },
+      {
+        path:"category/:categoryID",
+        component:SongListByCategoryComponent
       },
       {
         path: 'loved-song',

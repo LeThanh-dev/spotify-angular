@@ -1,4 +1,5 @@
 <div class="spotify">
+
     <div class="spotify-container">
         <div class="spotify-side-bar">
             <a href="/" style="color:black">
@@ -42,6 +43,7 @@
         <div class="spotify-content">
             <div class="user-infor">
                 <app-user></app-user>
+                <i class="fa-solid fa-power-off sign-out-icon" (click)="signOut()"></i>
             </div>
             <!-- Children Element -->
             <router-outlet></router-outlet>

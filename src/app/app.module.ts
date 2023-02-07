@@ -17,6 +17,10 @@ import { SongNameTemplateComponent } from './components/song-list-template/song-
 import { PlayIconComponent } from './components/play-icon/play-icon/play-icon.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { AlertTemplateComponent } from './components/alert-template/alert-template/alert-template.component';
+import { HomePageTemplateComponent } from './components/home-page-template/home-page-template/home-page-template.component';
+import { SongListByCategoryComponent } from './components/song-list-by-category/song-list-by-category/song-list-by-category.component';
+import { LoadingComponent } from './components/loading/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     DefaultLayoutComponent,
     SongNameTemplateComponent,
     PlayIconComponent,
+    AlertTemplateComponent,
+    HomePageTemplateComponent,
+    SongListByCategoryComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

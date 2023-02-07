@@ -72,8 +72,19 @@
                 color: white;
                 position: absolute;
                 top: 16px;
-                right: 32px;
+                right: 24px;
                 border-radius: 32px;
+                display: flex;
+                align-items: center;
+                .sign-out-icon {
+                    font-size: 2rem;
+                    background: red;
+                    color: white;
+                    padding: 6px;
+                    border-radius: 50%;
+                    margin-left: 12px;
+                    cursor: pointer;
+                }
             }
         }
     }
