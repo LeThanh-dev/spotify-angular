@@ -11,7 +11,8 @@ export interface SongData {
   imageURL: string,
   pathMusic: string,
   categoryName: string,
-  isDelete: boolean
+  isDelete: boolean,
+  userLoved:string[]
 }
 
 @Component({
@@ -28,13 +29,12 @@ export class SongListTemplateComponent implements OnInit {
 
   }
 
-
   ngOnInit(): void {
 
   }
 
-
-
+  showLoveIcon = ''
+  showActiveLoveIcon = false
 
   headerLabel: string[] = [
     "#",
@@ -49,14 +49,6 @@ export class SongListTemplateComponent implements OnInit {
     return this.time.convertTime({ time })
   }
 
-  open(data: any) {
-    console.log('click parent')
-  }
-
-  loveSongFunc({ event, songData }: { event: any, songData: SongData }) {
-    event.stopPropagation()
-    console.log(songData)
-  }
 
   playSong(song: SongData) {
     this.playingSong.setPlayingSong({
@@ -71,9 +63,9 @@ export class SongListTemplateComponent implements OnInit {
       isPlaying: data.isPlaying
     }
   }
-  addToLovedSong(event: any) {
+  addToLovedSong(event:any,song:SongData) {
     event.stopPropagation()
-    console.log('love click');
+    console.log(song)
   }
 
 

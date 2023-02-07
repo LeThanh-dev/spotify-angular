@@ -1,0 +1,9 @@
+.alert-template{
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    margin-top: 8px;
+    .text {
+        margin-left: 6px;
+    }
+}

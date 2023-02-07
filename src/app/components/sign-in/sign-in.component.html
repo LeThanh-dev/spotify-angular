@@ -13,27 +13,44 @@
             <span class="label">Đăng nhập</span>
             <hr class="bar" />
         </div>
-        <form class="col-md-4 form" [formGroup]="formData" (ngSubmit)="signInFunc()">
+        <form class="col-md-4 form" [formGroup]="formData" (ngSubmit)="!formData.invalid &&signInFunc()" #form="ngForm">
 
             <div class="form-item">
                 <label for="accountName" class="label">Địa chỉ email hoặc tài khoản</label>
                 <input class="input" type="text" id="accountName" placeholder="Địa chỉ email hoặc tài khoản"
                     formControlName="userName" required>
+                <div *ngIf="!formData.controls.userName.valid && form.submitted">
+                    <app-alert-template [styleCustom]="'color:red'"
+                        [text]="'Bạn cần nhập email hoặc tài khoản.'"></app-alert-template>
+                </div>
             </div>
 
             <div class="form-item">
                 <label for="password" class="label">Mật khẩu</label>
-                <input class="input" type="text" id="password" placeholder="Mật khẩu" formControlName="password"
+                <input class="input" type="password" id="password" placeholder="Mật khẩu" formControlName="passWord"
                     required>
+                <div *ngIf="!formData.controls.passWord.valid && form.submitted">
+                    <app-alert-template [styleCustom]="'color:red'"
+                        [text]="'Bạn cần nhập mật khẩu.'"></app-alert-template>
+                </div>
             </div>
 
             <div class="submit-btn">
                 <button type="submit" class="btn">ĐĂNG NHẬP</button>
             </div>
         </form>
-        <p class="account-empty-label">Bạn đã có tài khoản?</p>
+        <p class="account-empty-label">Bạn chưa có tài khoản?</p>
         <a href="/sign-up">
             <button class="sign-up-btn">Đăng ký tài khoản Spotify</button>
         </a>
     </div>
-</div>
+    <div class="alert-cutom" *ngIf="signInStateError">
+        <app-alert-template [styleCustom]="'
+            background: red;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 1.6rem;
+        '" [text]="'Đăng nhập lỗi'">
+        </app-alert-template>
+    </div>

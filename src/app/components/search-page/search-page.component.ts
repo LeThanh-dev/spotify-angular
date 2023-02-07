@@ -29,6 +29,7 @@ export class SearchPageComponent implements OnInit {
       this.categoryList = data as CategoryData[]
     })
   }
+  
   randomColor() {
     return this.color.random()
   }

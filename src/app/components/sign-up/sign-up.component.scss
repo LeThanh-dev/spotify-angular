@@ -40,11 +40,21 @@
                 }
                 .input {
                     width: 100%;
-                    border: none;
+                    font-size: 1.4rem;
                     outline: none;
                     padding: 16px;
                     border-radius: 6px;
                     border: 1px solid;
+                }
+                .error-label {
+                    display: flex;
+                    align-items: center;
+                    color: red;
+                    font-size: 1.3rem;
+                    margin-top: 8px;
+                    .text {
+                        margin-left: 6px;
+                    }
                 }
             }
             .submit-btn {
@@ -52,7 +62,7 @@
                 text-align: end;
                 .btn {
                     background-color: var(--greenColor);
-                    padding: 10px 32px;
+                    padding: 10px 24px;
                     border-radius: 24px;
                     outline: none;
                     border: none;

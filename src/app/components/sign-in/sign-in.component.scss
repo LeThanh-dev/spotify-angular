@@ -38,6 +38,7 @@
                     font-weight: 500;
                     font-size: 1.4rem;
                     margin-bottom: 6px;
+                    font-size: 1.4rem;
                 }
                 .input {
                     width: 100%;
@@ -46,6 +47,7 @@
                     padding: 16px;
                     border-radius: 6px;
                     border: 1px solid;
+                    font-size: 1.4rem;
                 }
             }
             .submit-btn {
@@ -53,8 +55,8 @@
                 text-align: end;
                 .btn {
                     background-color: var(--greenColor);
-                    padding: 10px 32px;
-                    border-radius:24px;
+                    padding: 10px 24px;
+                    border-radius: 24px;
                     outline: none;
                     border: none;
                     font-weight: 500;
@@ -78,10 +80,16 @@
             border-radius: 32px;
             background: white;
             transition: 0.1s;
+            font-size: 1.5rem;
             cursor: pointer;
             &:hover {
                 border-color: black;
             }
         }
+    }
+    .alert-cutom {
+        position: fixed;
+        top: 12px;
+        right: 12px;
     }
 }

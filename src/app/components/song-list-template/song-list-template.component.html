@@ -11,8 +11,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let song of songList; let index = index" (click)="playSong(song)"
-            [ngClass]="{'active':getPLayingSongState().id === song.songID && getPLayingSongState().isPlaying}">
-            <span *ngIf="getPLayingSongState().id === song.songID && getPLayingSongState().isPlaying; then play; else normal"></span>
+            [ngClass]="{'active':getPLayingSongState().id === song.songID && getPLayingSongState().isPlaying}"
+            (mouseenter)="showLoveIcon = song.songID" (mouseleave)="showLoveIcon = ''">
+            <span
+                *ngIf="getPLayingSongState().id === song.songID && getPLayingSongState().isPlaying; then play; else normal"></span>
             <ng-template #play>
                 <td class="center-cell">
                     <img src="../../../assets/song-playing.svg" />
@@ -33,8 +35,12 @@
             <td>{{song.author}}</td>
             <td>{{song.categoryName}}</td>
             <td>
-                <i class="fa-regular fa-heart love-icon" (click)="addToLovedSong($event)"></i>
+                <i *ngIf="showLoveIcon === song.songID || song.userLoved.includes('thanh')"
+                    [ngClass]="[true && 'fa-heart love-icon', song.userLoved.includes('thanh') || showActiveLoveIcon ? 'fa-solid lovedActive' : 'fa-regular']"
+                    (click)="addToLovedSong($event,song)" (mouseenter)="showActiveLoveIcon = true"
+                    (mouseleave)="showActiveLoveIcon = false" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top"></i>
             </td>
+            
             <!-- <td>{{convertTimeFunction({time:song.duration})}}</td> -->
         </tr>
     </tbody>
