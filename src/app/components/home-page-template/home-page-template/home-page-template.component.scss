@@ -21,5 +21,24 @@
     }
     .song-list {
         margin-top: 60px;
+        .title {
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        .list-empty {
+            font-size: 2rem;
+            text-align: center;
+            margin-top: 32px;
+        }
+    }
+}
+
+@media (max-width: 740px) {
+    .home-page {
+        .search-input {
+            .input {
+                width: 50vw;
+            }
+        }
     }
 }

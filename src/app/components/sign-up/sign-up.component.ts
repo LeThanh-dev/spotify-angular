@@ -15,9 +15,13 @@ export class SignUpComponent implements OnInit {
     private songServer: SongApiService,
     private router: Router
   ) { }
+
   ngOnInit(): void {
 
   }
+
+  isLoading = false
+
   formData = this.formBuilder.group({
     userName: ['', Validators.required],
     passWord: ['', Validators.required],
@@ -26,12 +30,18 @@ export class SignUpComponent implements OnInit {
   })
 
   signUpFunc() {
+    this.isLoading = true
     delete this.formData.value.rePassWord
     const data = this.formData.value
-    this.songServer.signUpAccount(data).subscribe((response:any) => {
-      if (response) {
+    this.songServer.signUpAccount(data).subscribe((response: any) => {
+      if (response.status === 200) {
         this.router.navigate(['sign-in'])
       }
+      else {
+        alert(response.message)
+      }
+      this.isLoading = false
+
     })
   }
 }

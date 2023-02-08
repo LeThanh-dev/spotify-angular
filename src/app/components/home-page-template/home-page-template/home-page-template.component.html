@@ -5,6 +5,15 @@
             (ngModelChange)="searchSongFunc()" />
     </div>
     <div class="song-list">
-        <app-song-list-template [songList]="songList"></app-song-list-template>
+        <h1 class="title" *ngIf="title">Thể loại: {{title}}</h1>
+        <div *ngIf="!isLoading">
+            <span *ngIf="songList.length > 0; then show; else hidden"></span>
+            <ng-template #show>
+                <app-song-list-template [songList]="songList"></app-song-list-template>
+            </ng-template>
+            <ng-template #hidden>
+                <p class="list-empty" >Danh sách nhạc trống</p>
+            </ng-template>
+        </div>
     </div>
 </div>

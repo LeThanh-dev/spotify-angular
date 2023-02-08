@@ -19,17 +19,22 @@ export class SearchPageComponent implements OnInit {
   constructor(private color: RandomColorService, private songService: SongApiService) { };
 
   categoryList: CategoryData[] = []
+  isLoading = false
 
   ngOnInit(): void {
     this.getCategoryList()
   }
 
   getCategoryList() {
+    this.isLoading = true
     this.songService.getCategoryList().subscribe(data => {
       this.categoryList = data as CategoryData[]
+      this.isLoading = false
+    },err=>{
+      this.isLoading = false
     })
   }
-  
+
   randomColor() {
     return this.color.random()
   }

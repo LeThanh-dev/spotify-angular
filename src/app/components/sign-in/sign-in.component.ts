@@ -23,6 +23,8 @@ export class SignInComponent implements OnInit {
   }
 
   signInStateError: boolean = false
+  isLoading = false
+
 
   formData = this.formBuilder.group({
     userName: ['', Validators.required],
@@ -30,19 +32,26 @@ export class SignInComponent implements OnInit {
   })
 
   signInFunc() {
+    this.isLoading = true
     const data = this.formData.value
     this.songServer.signInAccount(data).subscribe((res: any) => {
-      if (res) {
+      if (res.status === 200) {
         const userSignedInData = this.jwt.decodeToken(res?.token || "")
         const data = {
-          userId: userSignedInData?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
+          userID: userSignedInData?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
           userName: userSignedInData?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
         }
         sessionStorage.setItem('userData', JSON.stringify(data))
         this.route.navigate([''])
+        this.isLoading = false
+      }
+      else {
+        this.signInStateError = true
+        this.isLoading = false
       }
     }, error => {
       this.signInStateError = true
+      this.isLoading = false
     })
   }
 }

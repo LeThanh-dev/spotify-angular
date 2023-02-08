@@ -1,60 +1,91 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 
-export const  BASE_URL = "http://192.168.48.152:8009"
-export const BASE_URL_DEMO = "http://localhost:3000"
+export const BASE_URL = "http://192.168.48.152:8009"
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongApiService implements OnInit {
 
-  constructor(private http: HttpClient) { }
+
+  constructor(
+    private http: HttpClient,
+  ) { }
 
   ngOnInit(): void {
 
   }
 
-  private getData(endPoint: string) {
-    return this.http.get(
-      endPoint, {
-      headers: {
-        "Content-Type": "application/json"
+  headerOptions = {
+    "Content-Type": "application/json",
+  }
+
+
+  // GET
+  getSongList() {
+    return this.http.get(`${BASE_URL}/Song/get-list-song`,
+      {
+        headers: this.headerOptions,
       },
-    }
     )
   }
-  private setData(endPoint: string, data: Object) {
-    return this.http.post(
-      endPoint,
-      data,
+  getLovedSongByUserId(id: string) {
+    return this.http.get(`${BASE_URL}/LovedSong/get-list-loved-song-by-user`,
       {
-        headers: {
-          "Content-Type": "application/json"
-        }
+        headers: this.headerOptions,
+        params: { id }
       }
     )
   }
-  // GET
-  getSongList() {
-    return this.getData(`${BASE_URL}/Song/get-list-song`)
-    // return this.getData(`${BASE_URL_DEMO}/get-list-song`)
-  }
+
   getCategoryList() {
-    return this.getData(`${BASE_URL}/Category/get-list-category`)
+    return this.http.get(`${BASE_URL}/Category/get-list-category`, {
+      headers: this.headerOptions
+    })
   }
 
   getSongListByCategory(id: string) {
-    return this.getData(`${BASE_URL}/Song/get-song-by-category?id=${id}`)
+    return this.http.get(`${BASE_URL}/Song/get-song-by-category`, {
+      headers: this.headerOptions,
+      params: { id }
+    })
   }
 
 
   // SET
   signUpAccount(data: Object) {
-    return this.setData(`${BASE_URL}/Authentication/Registration`, data)
+    return this.http.post(`${BASE_URL}/Authentication/Registration`,
+      data,
+      {
+        headers: this.headerOptions,
+      })
   }
 
   signInAccount(data: Object) {
-    return this.setData(`${BASE_URL}/Authentication/Login`, data)
+    return this.http.post(`${BASE_URL}/Authentication/Login`,
+      data,
+      {
+        headers: this.headerOptions
+      })
+  }
+
+  setLovedSong(data: { userID: string, songID: string }) {
+    return this.http.post(`${BASE_URL}/LovedSong/create-loved-song`,
+      data,
+      {
+        headers: this.headerOptions,
+      })
+
+  }
+
+  // DELETE
+  removeLovedSong(data: { userID: string, songID: string }) {
+
+    return this.http.delete(`${BASE_URL}/Song/delete-user-loved`,
+      {
+        headers: this.headerOptions,
+        body: data
+      })
   }
 }

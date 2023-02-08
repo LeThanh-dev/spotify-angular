@@ -35,9 +35,13 @@
                 </div>
             </div>
 
-            <div class="submit-btn">
-                <button type="submit" class="btn">ĐĂNG NHẬP</button>
-            </div>
+            <button type="submit" class="btn">
+                <span *ngIf="isLoading; then icon; else text"></span>
+                <ng-template #text><span>ĐĂNG NHẬP</span></ng-template>
+                <ng-template #icon>
+                    <div class="spinner-border" role="status"></div>
+                </ng-template>
+            </button>
         </form>
         <p class="account-empty-label">Bạn chưa có tài khoản?</p>
         <a href="/sign-up">

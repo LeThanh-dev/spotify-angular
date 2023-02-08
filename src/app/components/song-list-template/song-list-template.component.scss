@@ -29,15 +29,18 @@ $activeColor: #2a2a2a;
         text-align: center;
     }
     .love-icon {
+        font-size: 1.8rem;
+        visibility: hidden;
         cursor: pointer;
-        transition: 0.1s;
         &:hover {
-            transform: scale(1.1);
-            opacity: 1;
             color: var(--greenColor);
         }
     }
     .lovedActive {
         color: var(--greenColor);
+    }
+    .show-icon
+    {
+        visibility: visible;
     }
 }

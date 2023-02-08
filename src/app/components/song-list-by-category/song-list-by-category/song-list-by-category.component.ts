@@ -13,6 +13,8 @@ export class SongListByCategoryComponent implements OnInit {
   songList: SongData[] = []
   isLoading:boolean = false
 
+  categoryName:string = ""
+  
   constructor(
     private param: ActivatedRoute,
     private songServer: SongApiService
@@ -20,6 +22,7 @@ export class SongListByCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSongListByCategory()
+    this.categoryName = this.param.snapshot.params['categoryName']
   }
 
   getSongListByCategory() {
@@ -29,6 +32,8 @@ export class SongListByCategoryComponent implements OnInit {
       this.songServer.getSongListByCategory(categoryID).subscribe(data => {
         this.isLoading = false
         this.songList = data as SongData[]
+      },err=>{
+        this.isLoading = false
       })
     }
   }

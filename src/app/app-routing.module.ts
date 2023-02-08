@@ -26,7 +26,7 @@ const routes: Routes = [
         component: SearchPageComponent,
       },
       {
-        path:"category/:categoryID",
+        path:"category/:categoryID/:categoryName",
         component:SongListByCategoryComponent
       },
       {
@@ -50,7 +50,7 @@ const routes: Routes = [
 
   {
     path: '**',
-    title: "Spotify",
+    title: "Không tìm thấy trang",
     component: NotFoundPageComponent
   },
 

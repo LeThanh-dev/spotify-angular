@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { UserLocalService } from './../../services/user-local/user-local.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,21 +10,11 @@ export class UserComponent implements OnInit {
 
   userName: string = ""
 
-  constructor(private router: Router) {
-
-  }
+  constructor(private userLocal:UserLocalService) {}
 
   ngOnInit() {
-    this.getUserName()
+    this.userName = this.userLocal.getUserName()
   }
 
-  getUserName() {
-    const userDataLocal = sessionStorage.getItem("userData")
-    if (userDataLocal) {
-      this.userName = JSON.parse(userDataLocal)?.userName || ""
-    }
-    else {
-      this.router.navigate(['sign-in'])
-    }
-  }
+  
 }

@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultLayoutComponent implements OnInit {
 
+  sideBarStateOnMobile = true
 
   constructor(
     private playingSong: PlayingSongService,
@@ -16,7 +17,7 @@ export class DefaultLayoutComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
-
+    window.innerWidth <= 740 && (this.sideBarStateOnMobile = false)
   }
 
   getPlayingSong() {
@@ -34,5 +35,13 @@ export class DefaultLayoutComponent implements OnInit {
   signOut() {
     sessionStorage.removeItem("userData")
     this.route.navigate(["sign-in"])
+  }
+
+  showSideBar() {
+    this.sideBarStateOnMobile = true
+  }
+  
+  hideSideBar() {
+    this.sideBarStateOnMobile = false
   }
 }

@@ -1,4 +1,4 @@
-<app-home-page-template [songList] = "songList"></app-home-page-template>
+<app-home-page-template [isLoading] = "isLoading" [songList]="songList" [title]="categoryName"></app-home-page-template>
 <div *ngIf="isLoading">
     <app-loading></app-loading>
 </div>

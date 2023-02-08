@@ -35,12 +35,15 @@
             <td>{{song.author}}</td>
             <td>{{song.categoryName}}</td>
             <td>
-                <i *ngIf="showLoveIcon === song.songID || song.userLoved.includes('thanh')"
-                    [ngClass]="[true && 'fa-heart love-icon', song.userLoved.includes('thanh') || showActiveLoveIcon ? 'fa-solid lovedActive' : 'fa-regular']"
-                    (click)="addToLovedSong($event,song)" (mouseenter)="showActiveLoveIcon = true"
-                    (mouseleave)="showActiveLoveIcon = false" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top"></i>
+                <i [ngClass]="[
+                true && 'fa-heart love-icon', 
+                song.userLoved?.includes(getUserIDLocal())  || showActiveLoveIcon ? 'fa-solid lovedActive' : 'fa-regular',
+                (showLoveIcon === song.songID || song.userLoved?.includes(getUserIDLocal()) ) ? 'show-icon': ''
+                ]" (click)="!song.userLoved?.includes(getUserIDLocal()) ? addToLovedSong($event,song) : removeFromLovedSong($event,song)"
+                    (mouseenter)="showActiveLoveIcon = true" (mouseleave)="showActiveLoveIcon = false"
+                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top"></i>
             </td>
-            
+
             <!-- <td>{{convertTimeFunction({time:song.duration})}}</td> -->
         </tr>
     </tbody>

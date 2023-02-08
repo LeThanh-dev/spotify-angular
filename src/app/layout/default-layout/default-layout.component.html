@@ -1,7 +1,7 @@
 <div class="spotify">
 
     <div class="spotify-container">
-        <div class="spotify-side-bar">
+        <div class="spotify-side-bar" >
             <a href="/" style="color:black">
                 <svg viewBox="0 0 1134 340" class="side-bar-logo">
                     <title>Spotify</title>
@@ -10,8 +10,8 @@
                     </path>
                 </svg>
             </a>
-
             <div class="size-bar-option">
+                <!-- <i class="fa-solid fa-xmark close-icon" (click) = "hideSideBar()"></i> -->
                 <a routerLink="/" class="size-bar-option-item" routerLinkActive="option-item-active"
                     [routerLinkActiveOptions]="{exact:
                     true}">
@@ -27,11 +27,6 @@
                     <img class="icon" src="../assets/love-song-icon.png" />
                     <span class="option-item-label">Bài hát đã thích</span>
                 </a>
-                <a routerLink="/sign-in" class="size-bar-option-item option-item-loved-song"
-                    routerLinkActive="option-item-active">
-                    <img class="icon" src="../assets/love-song-icon.png" />
-                    <span class="option-item-label">Dang nhap</span>
-                </a>
                 <a href="https://www.spotify.com/vn-vi/download/windows/" target="_blank"
                     class="size-bar-option-item option-item-install-app">
                     <i class="fa-solid fa-circle-down icon"></i>
@@ -41,6 +36,9 @@
             </div>
         </div>
         <div class="spotify-content">
+            <!-- <div class="navbar" (click) = "showSideBar()">
+                <i class="fa-solid fa-bars"></i>
+            </div> -->
             <div class="user-infor">
                 <app-user></app-user>
                 <i class="fa-solid fa-power-off sign-out-icon" (click)="signOut()"></i>
@@ -58,10 +56,7 @@
                 songSingers:getPlayingSong().singers
             }" [bigImageState]="true"></app-song-name-template>
         </div>
-        <!-- <div class="pre-next-icon">
-            <i class="fa-solid fa-backward-step icon"></i>
-            <i class="fa-solid fa-forward-step icon"></i>
-        </div> -->
+       
         <div class="play-box">
             <audio class="audio" controls [src]="getPlayingSong().pathMusic" #audioELement (pause)="pauseSong()"
                 (play)="playSong()">

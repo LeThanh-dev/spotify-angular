@@ -9,6 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HomePageTemplateComponent implements OnInit {
 
   @Input() songList: SongData[] = []
+  @Input() title: string = ""
+  @Input() isLoading: boolean = false
 
   songListDefault: SongData[] = []
   songNameInput: string = ""

@@ -12,8 +12,8 @@
             padding: 16px 20px;
             width: 240px;
             background-color: black;
-            position: relative;
             border-right: 1px solid var(--borderColor);
+            position: relative;
             .icon {
                 padding-right: 6px;
                 font-size: 2rem;
@@ -28,6 +28,7 @@
                 margin-top: 12px;
                 padding-top: 6px;
                 border-bottom: 1px solid var(--borderColor);
+
                 .size-bar-option-item {
                     display: flex;
                     align-items: center;
@@ -59,6 +60,13 @@
                     bottom: 0;
                 }
             }
+            .close-icon {
+                position: absolute;
+                top: 0px;
+                right: 24px;
+                font-size: 3rem;
+                cursor: pointer;
+            }
         }
         .spotify-content {
             flex: 1;
@@ -85,6 +93,11 @@
                     margin-left: 12px;
                     cursor: pointer;
                 }
+            }
+            .navbar {
+                font-size: 2rem;
+                margin-bottom: 24px;
+                display: none;
             }
         }
     }
@@ -115,6 +128,42 @@
             .audio {
                 width: 100%;
             }
+        }
+    }
+}
+@media (max-width: 740px) {
+    .spotify {
+        .spotify-container {
+            .spotify-side-bar {
+                width: fit-content;
+                position: absolute;
+                top: 30%;
+                left: 0;
+                transform: translateY(-50%);
+                z-index: 2;
+                border-radius: 0 12px 12px 0;
+                .side-bar-logo {
+                    display: none;
+                }
+                .size-bar-option {
+                    .size-bar-option-item {
+                        .option-item-label {
+                            display: none;
+                        }
+                    }
+                    .option-item-install-app {
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+    .spotify-playing-bar {
+        .song-infor {
+            display: none;
+        }
+        .play-box {
+            flex: 1;
         }
     }
 }

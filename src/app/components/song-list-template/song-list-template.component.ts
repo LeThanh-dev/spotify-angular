@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { SongApiService } from 'src/app/services/song-api/song-api.service';
+import { UserLocalService } from './../../services/user-local/user-local.service';
 import { PlayingSongService } from './../../services/playing-song/playing-song.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ConvertTimeService } from 'src/app/services/convert-time/convert-time.service';
@@ -12,7 +15,8 @@ export interface SongData {
   pathMusic: string,
   categoryName: string,
   isDelete: boolean,
-  userLoved:string[]
+  userLoved: string[]
+  lovedSongID?: string,
 }
 
 @Component({
@@ -25,13 +29,20 @@ export class SongListTemplateComponent implements OnInit {
   @Input() songList!: SongData[];
   @Input() headerDark: boolean = false;
 
-  constructor(private time: ConvertTimeService, private playingSong: PlayingSongService) {
+  constructor(
+    private time: ConvertTimeService,
+    private playingSong: PlayingSongService,
+    private userLocal: UserLocalService,
+    private songAPI: SongApiService,
+    private router: Router
+  ) {
 
   }
 
   ngOnInit(): void {
 
   }
+ 
 
   showLoveIcon = ''
   showActiveLoveIcon = false
@@ -63,10 +74,51 @@ export class SongListTemplateComponent implements OnInit {
       isPlaying: data.isPlaying
     }
   }
-  addToLovedSong(event:any,song:SongData) {
+  addToLovedSong(event: any, song: SongData) {
     event.stopPropagation()
-    console.log(song)
+    const userIDInput = this.userLocal.getUserID()
+    const songIDInput = song.songID
+
+    const data = {
+      userID: userIDInput,
+      songID: songIDInput
+    }
+    this.songAPI.setLovedSong(data).subscribe(res => {
+      console.log('then love thanh cong');
+      this.songList = this.songList.map(songData => {
+        if (songData.songID === songIDInput) {
+          songData.userLoved.push(userIDInput)
+        }
+        return songData
+      })
+    })
+  }
+  removeFromLovedSong(event: any, song: SongData) {
+    event.stopPropagation()
+
+    const userIDInput = this.userLocal.getUserID()
+    const songIDInput = song.songID
+
+    const data = {
+      userID: userIDInput,
+      songID: songIDInput
+    }
+
+    this.songAPI.removeLovedSong(data).subscribe((res: any) => {
+      console.log('xoa thanh cong');
+
+      this.songList = this.songList.map(songData => {
+        if (songData.songID === songIDInput) {
+          const songIndexIsRemoved = songData.userLoved.indexOf(userIDInput)
+          songData.userLoved.splice(songIndexIsRemoved, 1)
+        }
+        return songData
+      })
+
+    })
   }
 
-
+  getUserIDLocal() {
+    return this.userLocal.getUserID()
+  }
 }

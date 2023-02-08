@@ -32,7 +32,8 @@
                 <input #passWord class="input" type="password" id="password" placeholder="Mật khẩu"
                     formControlName="passWord">
                 <div *ngIf="!formData.controls.passWord.valid && form.submitted">
-                    <app-alert-template [styleCustom]="'color:red'" [text]="'Bạn cần nhập mật khẩu.'"></app-alert-template>
+                    <app-alert-template [styleCustom]="'color:red'"
+                        [text]="'Bạn cần nhập mật khẩu.'"></app-alert-template>
                 </div>
             </div>
 
@@ -51,9 +52,13 @@
                 </div>
             </div>
 
-            <div class="submit-btn">
-                <button type="submit" class="btn">ĐĂNG KÝ</button>
-            </div>
+            <button type="submit" class="btn">
+                <span *ngIf="isLoading; then icon; else text"></span>
+                <ng-template #text><span>ĐĂNG KÝ</span></ng-template>
+                <ng-template #icon>
+                    <div class="spinner-border" role="status"></div>
+                </ng-template>
+            </button>
         </form>
         <p class="account-exist-label">Bạn đã có tài khoản. <span>
                 <a href="/sign-in" class="sign-in-label">Đăng nhập</a>
