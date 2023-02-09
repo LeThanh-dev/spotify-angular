@@ -16,8 +16,6 @@ export class HomePageTemplateComponent implements OnInit {
   songNameInput: string = ""
 
   ngOnInit() {
-    console.log(this.songListDefault)
-    console.log(this.songList)
 
   }
   searchSongFunc() {

@@ -58,8 +58,14 @@
         </div>
        
         <div class="play-box">
-            <audio class="audio" controls [src]="getPlayingSong().pathMusic" #audioELement (pause)="pauseSong()"
-                (play)="playSong()">
+            <audio
+             class="audio" 
+             controls 
+             [src]="getPlayingSong().pathMusic"
+             (pause)="pauseSong()"
+             (play)="playSong()"
+             #audioELement  
+             >
             </audio>
 
             <!-- handle play song -->

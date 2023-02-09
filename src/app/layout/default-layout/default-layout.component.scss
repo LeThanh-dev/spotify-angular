@@ -108,7 +108,7 @@
         justify-content: space-between;
         padding: 16px;
         .song-infor {
-            flex-basis: 25%;
+            flex-basis: 40%;
         }
         // .pre-next-icon {
         //     margin: 0 24px;
@@ -123,8 +123,7 @@
         //     }
         // }
         .play-box {
-            flex-basis: 50%;
-
+            flex: 1;
             .audio {
                 width: 100%;
             }
@@ -161,9 +160,6 @@
     .spotify-playing-bar {
         .song-infor {
             display: none;
-        }
-        .play-box {
-            flex: 1;
         }
     }
 }

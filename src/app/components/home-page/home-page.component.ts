@@ -13,23 +13,26 @@ import { SongData } from '../song-list-template/song-list-template.component';
 export class HomePageComponent implements OnInit {
 
   songList: SongData[] = []
+  isLoading = false
 
   constructor(private songService: SongApiService, private playingSong: PlayingSongService) { }
 
   getSongList() {
+    this.isLoading = true
     this.songService.getSongList()
       .subscribe(songList => {
         this.songList = songList as SongData[]
         !this.playingSong.getPlayingSong().songID && this.playingSong.setPlayingSong(this.songList[0])
+        this.isLoading = false
       })
   }
 
   ngOnInit() {
     this.getSongList()
-    
+
   }
 
- 
+
 
 }
 

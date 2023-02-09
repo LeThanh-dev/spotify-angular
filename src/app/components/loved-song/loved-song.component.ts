@@ -20,6 +20,7 @@ interface LovedSongDataResponse extends SongData {
 export class LovedSongComponent implements OnInit {
 
   lovedSongListData: LovedSongData[] = []
+  isLoading = false
 
   constructor(
     private songService: SongApiService,
@@ -32,6 +33,7 @@ export class LovedSongComponent implements OnInit {
   }
 
   getSongList() {
+    this.isLoading = true
     this.songService.getLovedSongByUserId(this.userLocal.getUserID())
       .subscribe(songList => {
         const list = songList as LovedSongDataResponse[]
@@ -42,6 +44,7 @@ export class LovedSongComponent implements OnInit {
           }
         ))
         this.lovedSongListData.length > 0 && !this.playingSong.getPlayingSong().songID && this.playingSong.setPlayingSong(this.lovedSongListData[0])
+        this.isLoading = false
       })
   }
 

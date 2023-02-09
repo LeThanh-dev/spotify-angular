@@ -16,13 +16,18 @@ interface CategoryData {
 })
 export class SearchPageComponent implements OnInit {
 
-  constructor(private color: RandomColorService, private songService: SongApiService) { };
+  constructor(
+    private color: RandomColorService, 
+    private songService: SongApiService,
+
+    ) { };
 
   categoryList: CategoryData[] = []
   isLoading = false
 
   ngOnInit(): void {
     this.getCategoryList()
+    
   }
 
   getCategoryList() {

@@ -10,25 +10,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SongListByCategoryComponent implements OnInit {
 
+  categoryName:string = ""
   songList: SongData[] = []
   isLoading:boolean = false
-
-  categoryName:string = ""
   
   constructor(
     private param: ActivatedRoute,
-    private songServer: SongApiService
+    private songServer: SongApiService,
   ) { }
 
   ngOnInit(): void {
     this.getSongListByCategory()
-    this.categoryName = this.param.snapshot.params['categoryName']
   }
 
   getSongListByCategory() {
+    this.isLoading = true
+    this.categoryName = this.param.snapshot.params['categoryName']
     const categoryID = this.param.snapshot.params['categoryID']
     if (categoryID) {
-      this.isLoading = true
       this.songServer.getSongListByCategory(categoryID).subscribe(data => {
         this.isLoading = false
         this.songList = data as SongData[]

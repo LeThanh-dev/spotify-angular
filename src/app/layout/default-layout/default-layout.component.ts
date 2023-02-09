@@ -40,7 +40,7 @@ export class DefaultLayoutComponent implements OnInit {
   showSideBar() {
     this.sideBarStateOnMobile = true
   }
-  
+
   hideSideBar() {
     this.sideBarStateOnMobile = false
   }

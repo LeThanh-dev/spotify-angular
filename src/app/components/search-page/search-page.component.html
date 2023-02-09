@@ -1,8 +1,8 @@
 <div class="search">
     <h1 class="title">Thể loại nhạc</h1>
     <div class="song-category" *ngIf="!isLoading">
-        <a *ngFor="let category of categoryList" href="/category/{{category.id}}/{{category.name}}" class="song-category-item"
-            style="background-color: {{randomColor()}}">
+        <a *ngFor="let category of categoryList" routerLink="/category/{{category.id}}/{{category.name}}"
+            class="song-category-item" style="background-color: {{randomColor()}}">
             <p class="label">{{category.name}}</p>
         </a>
     </div>

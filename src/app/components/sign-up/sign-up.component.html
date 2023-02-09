@@ -15,11 +15,12 @@
         </div>
         <form class="col-md-4 form" [formGroup]="formData"
             (ngSubmit)="!formData.invalid && rePassWord.value === passWord.value && signUpFunc()" #form="ngForm">
-
             <div class="form-item">
                 <label for="accountName" class="label">Địa chỉ email hoặc tài khoản</label>
-                <input autofocus class="input" type="text" id="accountName" placeholder="Địa chỉ email hoặc tài khoản"
-                    formControlName="userName">
+                <input autofocus [ngClass]="{
+                    'input':true,
+                    'error-border':!formData.controls.userName.valid && form.submitted
+                }" type="text" id="accountName" placeholder="Địa chỉ email hoặc tài khoản" formControlName="userName">
 
                 <div *ngIf="!formData.controls.userName.valid && form.submitted">
                     <app-alert-template [styleCustom]="'color:red'"
@@ -29,8 +30,10 @@
 
             <div class="form-item">
                 <label for="password" class="label">Mật khẩu</label>
-                <input #passWord class="input" type="password" id="password" placeholder="Mật khẩu"
-                    formControlName="passWord">
+                <input #passWord [ngClass]="{
+                    'input':true,
+                    'error-border':!formData.controls.passWord.valid && form.submitted
+                }" type="password" id="password" placeholder="Mật khẩu" formControlName="passWord">
                 <div *ngIf="!formData.controls.passWord.valid && form.submitted">
                     <app-alert-template [styleCustom]="'color:red'"
                         [text]="'Bạn cần nhập mật khẩu.'"></app-alert-template>
@@ -39,10 +42,12 @@
 
             <div class="form-item">
                 <label for="re-password" class="label">Điền lại mật khẩu</label>
-                <input #rePassWord class="input" type="password" id="re-password" placeholder="Điền lại mật khẩu"
-                    formControlName="rePassWord">
+                <input #rePassWord [ngClass]="{
+                    'input':true,
+                    'error-border':form.submitted && (!formData.controls.rePassWord.valid  || rePassWord.value !== passWord.value)
+                }" type="password" id="re-password" placeholder="Điền lại mật khẩu" formControlName="rePassWord">
                 <div class="error-label"
-                    *ngIf="(!formData.controls.rePassWord.valid && form.submitted) || rePassWord.value !== passWord.value ">
+                    *ngIf="form.submitted && (!formData.controls.rePassWord.valid  || rePassWord.value !== passWord.value) ">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <p class="text">
                         <span *ngIf="rePassWord.value !== passWord.value; then  notSame; else empty"></span>

@@ -36,6 +36,7 @@ export class SignUpComponent implements OnInit {
     this.songServer.signUpAccount(data).subscribe((response: any) => {
       if (response.status === 200) {
         this.router.navigate(['sign-in'])
+        alert("Đăng ký thành công")
       }
       else {
         alert(response.message)

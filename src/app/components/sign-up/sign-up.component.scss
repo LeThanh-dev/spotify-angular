@@ -51,10 +51,13 @@
                     align-items: center;
                     color: red;
                     font-size: 1.3rem;
-                    margin-top: 8px;
+                    margin-top: 10px;
                     .text {
                         margin-left: 6px;
                     }
+                }
+                .error-border{
+                    border-color: red;
                 }
             }
             .btn {

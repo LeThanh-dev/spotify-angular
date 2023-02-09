@@ -1,5 +1,5 @@
-<div class="song-name-template" *ngIf="data">
-    <img [src]="data.songImage" class="image" [ngClass]="{'big-image': bigImageState}" />
+<div class="song-name-template" *ngIf="data" [ngClass]="{'big': bigImageState}">
+    <img [src]="data.songImage" class="image"  />
     <div class="infor">
         <p class="song-name">{{data.songName}}</p>
         <span class="song-singers" *ngFor="let songSinger of data.songSingers ; let i = index">
