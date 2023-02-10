@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -32,7 +33,8 @@ import { DefaultLayoutComponent } from './default-layout.component';
   ],
   imports: [
     CommonModule,
-    DefaultLayoutRoutingModule
+    DefaultLayoutRoutingModule,
+    FormsModule      
   ],
   exports:[DefaultLayoutComponent]
 })
