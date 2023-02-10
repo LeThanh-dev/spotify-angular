@@ -6,6 +6,8 @@ import { HomePageComponent } from 'src/app/components/home-page/home-page.compon
 import { LovedSongComponent } from 'src/app/components/loved-song/loved-song.component';
 import { SearchPageComponent } from 'src/app/components/search-page/search-page.component';
 import { SongListByCategoryComponent } from 'src/app/components/song-list-by-category/song-list-by-category/song-list-by-category.component';
+import { SignInComponent } from 'src/app/components/sign-in/sign-in.component';
+import { SignUpComponent } from 'src/app/components/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -33,7 +35,17 @@ const routes: Routes = [
         component: LovedSongComponent
       },
     ]
-  }
+  },
+  {
+    path: 'sign-in',
+    title: "Đăng nhập | Spotify",
+    component: SignInComponent
+  },
+  {
+    path: 'sign-up',
+    title: "Đăng ký | Spotify",
+    component: SignUpComponent
+  },
 ]
 
 @NgModule({

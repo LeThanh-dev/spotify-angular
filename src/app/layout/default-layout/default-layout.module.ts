@@ -1,4 +1,7 @@
-import { FormsModule } from '@angular/forms';
+import { AlertTemplateComponent } from './../../components/alert-template/alert-template/alert-template.component';
+import { SignInComponent } from './../../components/sign-in/sign-in.component';
+import { SignUpComponent } from './../../components/sign-up/sign-up.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -30,12 +33,16 @@ import { DefaultLayoutComponent } from './default-layout.component';
     SongListByCategoryComponent,
     LoadingComponent,
     UserComponent,
+    SignInComponent,
+    SignUpComponent,
+    AlertTemplateComponent
   ],
   imports: [
     CommonModule,
     DefaultLayoutRoutingModule,
-    FormsModule      
+    FormsModule,
+    ReactiveFormsModule
   ],
-  exports:[DefaultLayoutComponent]
+  exports: [DefaultLayoutComponent]
 })
 export class DefaultLayoutModule { }
